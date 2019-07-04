@@ -26,4 +26,10 @@ public class CourseRepositoryTest {
         Course course = courseRepository.findById(1001L);
         assertEquals("Simple JPA", course.getName());
     }
+
+    @Test
+    public void deleteById() {
+        courseRepository.deleteById(1001L);
+        assertNull(courseRepository.findById(1001L));
+    }
 }
