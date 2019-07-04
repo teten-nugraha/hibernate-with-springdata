@@ -16,6 +16,10 @@ public class CourseRepository {
         return em.find(Course.class, id);
     }
 //    public Course save(Course course)
-//    public void deleteById(Long id)
+
+    public void deleteById(Long id) {
+        Course course = em.find(Course.class, id);
+        em.remove(course);
+    }
 
 }

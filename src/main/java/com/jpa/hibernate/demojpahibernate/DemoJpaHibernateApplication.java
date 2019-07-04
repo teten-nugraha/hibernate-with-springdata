@@ -27,5 +27,7 @@ public class DemoJpaHibernateApplication implements CommandLineRunner {
         Course course = courseRepository.findById(1001L);
 
         logger.info("{}", course);
+
+        courseRepository.deleteById(1001L);
     }
 }
