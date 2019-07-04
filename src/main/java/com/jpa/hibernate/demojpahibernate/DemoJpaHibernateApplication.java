@@ -28,6 +28,6 @@ public class DemoJpaHibernateApplication implements CommandLineRunner {
 
         logger.info("{}", course);
 
-//        courseRepository.deleteById(1001L);
+        courseRepository.save(new Course("Microservices"));
     }
 }

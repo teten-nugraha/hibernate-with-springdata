@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.Assert.*;
@@ -28,8 +29,24 @@ public class CourseRepositoryTest {
     }
 
     @Test
+    @DirtiesContext
     public void deleteById() {
         courseRepository.deleteById(1001L);
         assertNull(courseRepository.findById(1001L));
+    }
+
+    @Test
+    @DirtiesContext
+    public void save_basic() {
+
+        Course course = courseRepository.findById(1001L);
+        assertEquals("Simple JPA", course.getName());
+
+        course.setName("Simple JPA - Updated");
+        courseRepository.save(course);
+
+        course = courseRepository.findById(1001L);
+        assertEquals("Simple JPA - Updated", course.getName());
+
     }
 }
